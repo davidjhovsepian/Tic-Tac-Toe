@@ -41,6 +41,26 @@ function checkScore() {
     console.log(allSquares[4])
 
     winningCombos.forEach(array => {
-        let circleWins = array.every(cell => allSquares[cell].firstChild?.classList.contains('circle'))
+        let circleWins = array.every(cell => 
+            allSquares[cell].firstChild?.classList.contains('circle'))
+        if (circleWins){
+            infoDisplay.textContent = "Circle Wins!"
+            allSquares.forEach(square => square.replaceWith(square.cloneNode(true)))
+            return
+        }
+    
     })
 }
+
+
+winningCombos.forEach(array => {
+    let crossWins = array.every(cell => 
+        allSquares[cell].firstChild?.classList.contains('circle'))
+    if (crossWins){
+        infoDisplay.textContent = "Circle Wins!"
+        allSquares.forEach(square => square.replaceWith(square.cloneNode(true)))
+        return
+    }
+
+})
+
